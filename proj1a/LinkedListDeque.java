@@ -1,10 +1,10 @@
-public class LinkedListDeque <UndeType>{
+public class LinkedListDeque <T>{
     private class StuffNode {
         public StuffNode prev;
         public StuffNode next;
-        public UndeType item;
+        public T item;
 
-        public StuffNode(StuffNode pr,StuffNode ne,UndeType it){
+        public StuffNode(StuffNode pr,StuffNode ne,T it){
             prev=pr;
             next=ne;
             item=it;
@@ -12,7 +12,7 @@ public class LinkedListDeque <UndeType>{
     }
     public int size;
     public StuffNode sentinel;
-    public LinkedListDeque(UndeType x){
+    public LinkedListDeque(T x){
         sentinel= new StuffNode(null,null,null);
         sentinel.next=new StuffNode(sentinel,sentinel,x);
         sentinel.prev=sentinel.next;
@@ -26,23 +26,23 @@ public class LinkedListDeque <UndeType>{
         size=0;
     }
 
-    public void addFirst(UndeType T){
-        sentinel.next=new StuffNode(sentinel,sentinel.next,T);
+    public void addFirst(T x){
+        sentinel.next=new StuffNode(sentinel,sentinel.next,x);
         sentinel.next.next.prev=sentinel.next;
         size +=1;
     }
 
-    public void addLast(UndeType T){
-        sentinel.prev=new StuffNode(sentinel.prev,sentinel,T);
+    public void addLast(T x){
+        sentinel.prev=new StuffNode(sentinel.prev,sentinel,x);
         sentinel.prev.prev.next=sentinel.prev;
         size +=1;
     }
 
-    public UndeType removeFirst(){
+    public T removeFirst(){
         if (size==0){
             return null;
         }else{
-            UndeType return_value;
+            T return_value;
             return_value=sentinel.next.item;
             sentinel.next=sentinel.next.next;
             sentinel.next.prev=sentinel;
@@ -51,11 +51,11 @@ public class LinkedListDeque <UndeType>{
         }
     }
 
-    public UndeType removeLast(){
+    public T removeLast(){
         if (size==0){
             return null;
         }else{
-            UndeType return_value;
+            T return_value;
             return_value=sentinel.prev.item;
             sentinel.prev=sentinel.prev.prev;
             sentinel.prev.next=sentinel;
@@ -80,7 +80,7 @@ public class LinkedListDeque <UndeType>{
         }
     }
 
-    public UndeType get(int index){
+    public T get(int index){
         StuffNode p=sentinel;
         if(index>size-1){
             return null;
@@ -92,7 +92,7 @@ public class LinkedListDeque <UndeType>{
         }
     }
 
-    public UndeType getRecursive_helper(StuffNode p,int index){
+    public T getRecursive_helper(StuffNode p,int index){
         if(index==0){
             return p.next.item;
         }else{
@@ -100,7 +100,7 @@ public class LinkedListDeque <UndeType>{
         }
     }
 
-    public UndeType getRecursive(int index){
+    public T getRecursive(int index){
         if(index>size-1){
             return null;
         }else{
@@ -120,8 +120,8 @@ public class LinkedListDeque <UndeType>{
         a.printDeque();
     }
 
-
 */
+
 
 
 

@@ -1,42 +1,42 @@
-public class ArrayDeque <UndeType>{
+public class ArrayDeque <T>{
     private int size;
     private int nextLast;
     private int nextFirst;
-    private UndeType[] items;
+    private T[] items;
 
-    public ArrayDeque(UndeType x){
+    public ArrayDeque(T x){
         size=1;
-        items=(UndeType[]) new Object[8];
+        items=(T[]) new Object[8];
         items[7]=x;
         nextFirst=6;
         nextLast=0;
     }
     public ArrayDeque(){
         size=0;
-        items=(UndeType[]) new Object[8];
+        items=(T[]) new Object[8];
         nextFirst=7;
         nextLast=0;
     }
     public void Resize(int capacity){
-        UndeType[] a=(UndeType[]) new Object[capacity];
+        T[] a=(T[]) new Object[capacity];
         System.arraycopy(items,0,a,0,nextLast);
         System.arraycopy(items,nextFirst+1,a,a.length-(items.length-1-nextFirst),items.length-1-nextFirst);
         nextFirst=nextFirst+(capacity-items.length);
         items=a;
     }
-    public void addFirst(UndeType T){
+    public void addFirst(T x){
         if(items.length==size){
             Resize(2*size);
         }
-        items[nextFirst]=T;
+        items[nextFirst]=x;
         size +=1;
         nextFirst -=1;
     }
-    public void addLast(UndeType T){
+    public void addLast(T x){
         if(items.length==size){
             Resize(2*size);
         }
-        items[nextLast]=T;
+        items[nextLast]=x;
         size +=1;
         nextLast +=1;
     }
@@ -46,7 +46,7 @@ public class ArrayDeque <UndeType>{
     public int size(){
         return size;
     }
-    public UndeType removeFirst(){
+    public T removeFirst(){
         if(size==0){
             return null;
         }
@@ -54,14 +54,14 @@ public class ArrayDeque <UndeType>{
             Resize(items.length/2);
         }
 
-        UndeType valueToReturn=items[nextFirst + 1];
+        T valueToReturn=items[nextFirst + 1];
         items[nextFirst + 1] = null;
         size -= 1;
         nextFirst += 1;
         return valueToReturn;
 
     }
-    public UndeType removeLast() {
+    public T removeLast() {
         if(size==0){
             return null;
         }
@@ -69,7 +69,7 @@ public class ArrayDeque <UndeType>{
             Resize(items.length/2);
         }
 
-        UndeType valueToReturn=items[nextLast - 1];
+        T valueToReturn=items[nextLast - 1];
         items[nextLast - 1] = null;
         size -= 1;
         nextLast -= 1;
@@ -84,7 +84,7 @@ public class ArrayDeque <UndeType>{
             System.out.print(items[i]+" ");
         }
     }
-    public UndeType get(int index){
+    public T get(int index){
         if(index>items.length-1){
             return null;
         }
@@ -94,7 +94,7 @@ public class ArrayDeque <UndeType>{
             return items[index+nextFirst-7];
         }
     }
-    /*
+/*
     public static void main(String[] args){
         ArrayDeque<Integer> a= new ArrayDeque<>();
         a.addFirst(14);
@@ -120,8 +120,8 @@ public class ArrayDeque <UndeType>{
         a.removeLast();
         a.printDeque();
     }
-*/
 
+*/
 
 
 
