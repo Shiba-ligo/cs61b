@@ -50,9 +50,9 @@ public class ArrayDeque <T>{
         if(size==0){
             return null;
         }
-        if(size==0.25*items.length){
+        /*if(size==0.25*items.length){
             Resize(items.length/2);
-        }
+        }*/
 
         T valueToReturn=items[nextFirst + 1];
         items[nextFirst + 1] = null;
@@ -65,9 +65,9 @@ public class ArrayDeque <T>{
         if(size==0){
             return null;
         }
-        if(size==0.25*items.length){
+        /*if(size==0.25*items.length){
             Resize(items.length/2);
-        }
+        }*/
 
         T valueToReturn=items[nextLast - 1];
         items[nextLast - 1] = null;
