@@ -4,20 +4,20 @@ public class ArrayDeque <T>{
     private int nextFirst;
     private T[] items;
 
-    public ArrayDeque(T x){
+    /*public ArrayDeque(T x){
         size=1;
         items=(T[]) new Object[8];
         items[7]=x;
         nextFirst=6;
         nextLast=0;
-    }
+    }*/
     public ArrayDeque(){
         size=0;
         items=(T[]) new Object[8];
         nextFirst=7;
         nextLast=0;
     }
-    public void Resize(int capacity){
+    private void Resize(int capacity){
         T[] a=(T[]) new Object[capacity];
         System.arraycopy(items,0,a,0,nextLast);
         System.arraycopy(items,nextFirst+1,a,a.length-(items.length-1-nextFirst),items.length-1-nextFirst);
@@ -97,28 +97,17 @@ public class ArrayDeque <T>{
 /*
     public static void main(String[] args){
         ArrayDeque<Integer> a= new ArrayDeque<>();
-        a.addFirst(14);
-        a.addFirst(17);
-        a.addFirst(4);
-        a.addFirst(4);
-        a.addFirst(19);
-        a.addFirst(4);
-        a.addFirst(15);
-        a.addFirst(7);
-        a.addLast(6);
-        a.addFirst(9);
-        System.out.println(a.size());
-        a.printDeque();
+       a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
         System.out.println(a.get(1));
-        a.removeFirst();
-        a.removeFirst();
-        a.removeFirst();
-        a.removeFirst();
-        a.removeFirst();
-        a.removeFirst();
-        a.removeFirst();
-        a.removeLast();
+
         a.printDeque();
+        System.out.println(a.get(0));
     }
 
 */

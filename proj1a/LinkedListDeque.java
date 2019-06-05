@@ -10,14 +10,14 @@ public class LinkedListDeque <T>{
             item=it;
         }
     }
-    public int size;
-    public StuffNode sentinel;
-    public LinkedListDeque(T x){
+    private int size;
+    private StuffNode sentinel;
+    /*public LinkedListDeque(T x){
         sentinel= new StuffNode(null,null,null);
         sentinel.next=new StuffNode(sentinel,sentinel,x);
         sentinel.prev=sentinel.next;
         size=1;
-    }
+    }*/
     public LinkedListDeque(){
         //sentinel=new StuffNode(sentinel,sentinel,63);
         sentinel=new StuffNode(null,null,null);
@@ -92,7 +92,7 @@ public class LinkedListDeque <T>{
         }
     }
 
-    public T getRecursive_helper(StuffNode p,int index){
+    private T getRecursive_helper(StuffNode p,int index){
         if(index==0){
             return p.next.item;
         }else{
