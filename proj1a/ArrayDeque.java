@@ -20,13 +20,15 @@ public class ArrayDeque <T>{
     private void Resize(int capacity){
         T[] a=(T[]) new Object[capacity];
         System.arraycopy(items,0,a,0,nextLast);
-        System.arraycopy(items,nextFirst+1,a,a.length-(items.length-1-nextFirst),items.length-1-nextFirst);
-        nextFirst=nextFirst+(capacity-items.length);
-        items=a;
+        if((items.length-1-nextFirst)>0) {
+            System.arraycopy(items, nextFirst + 1, a, a.length - (items.length - 1 - nextFirst), items.length - 1 - nextFirst);
+        }
+        nextFirst = nextFirst + (capacity - items.length);
+        items = a;
     }
     public void addFirst(T x){
         if(items.length==size){
-            Resize(2*size);
+            Resize(2*items.length);
         }
         items[nextFirst]=x;
         size +=1;
@@ -34,7 +36,7 @@ public class ArrayDeque <T>{
     }
     public void addLast(T x){
         if(items.length==size){
-            Resize(2*size);
+            Resize(2*items.length);
         }
         items[nextLast]=x;
         size +=1;
@@ -50,14 +52,16 @@ public class ArrayDeque <T>{
         if(size==0){
             return null;
         }
-        /*if(size==0.25*items.length){
-            Resize(items.length/2);
-        }*/
+
+
 
         T valueToReturn=items[nextFirst + 1];
         items[nextFirst + 1] = null;
         size -= 1;
         nextFirst += 1;
+        if(size<=0.25*items.length){
+            Resize(items.length/2);
+        }
         return valueToReturn;
 
     }
@@ -65,14 +69,15 @@ public class ArrayDeque <T>{
         if(size==0){
             return null;
         }
-        /*if(size==0.25*items.length){
-            Resize(items.length/2);
-        }*/
+
 
         T valueToReturn=items[nextLast - 1];
         items[nextLast - 1] = null;
         size -= 1;
         nextLast -= 1;
+        if(size<=0.25*items.length){
+            Resize(items.length/2);
+        }
         return valueToReturn;
 
     }
@@ -85,7 +90,7 @@ public class ArrayDeque <T>{
         }
     }
     public T get(int index){
-        if(index>items.length-1){
+        if(index>size-1){
             return null;
         }
         else if((index+nextFirst+1)<=items.length-1){
