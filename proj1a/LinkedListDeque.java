@@ -4,7 +4,7 @@ public class LinkedListDeque<T> {
         private StuffNode next;
         private T item;
 
-        private StuffNode(StuffNode pr,StuffNode ne,T it) {
+        private StuffNode(StuffNode pr, StuffNode ne, T it) {
             prev = pr;
             next = ne;
             item = it;
@@ -23,7 +23,7 @@ public class LinkedListDeque<T> {
         sentinel = new StuffNode(null, null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
-        size=0;
+        size = 0;
     }
 
     public void addFirst(T x) {
@@ -74,7 +74,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         StuffNode p = sentinel;
-        while (p.next != sentinel){
+        while (p.next != sentinel) {
             System.out.print(p.next.item + " ");
             p = p.next;
         }
@@ -85,7 +85,7 @@ public class LinkedListDeque<T> {
         if (index > size - 1) {
             return null;
         } else {
-            for(int i = 0; i < index; i += 1) {
+            for (int i = 0; i < index; i += 1) {
                 p = p.next;
             }
             return p.next.item;
