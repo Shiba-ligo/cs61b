@@ -16,76 +16,55 @@ public class TestPalindrome {
         assertEquals("persiflage", actual);
     }
     @Test
-    public void TestPalindrome1() {
+    public void testPalindrome1() {
         assertTrue(palindrome.isPalindrome("a"));
     }
 
     @Test
-    public void TestPalindrome2() {
+    public void testPalindrome2() {
         assertTrue(palindrome.isPalindrome("AcA"));
     }
 
     @Test
-    public void TestPalindrome3() {
+    public void testPalindrome3() {
         assertFalse(palindrome.isPalindrome("Aca"));
     }
 
     @Test
-    public void TestPalindrome4() {
+    public void testPalindrome4() {
         assertTrue(palindrome.isPalindrome("sttts"));
     }
 
 
     /** unit tests for isPalindrome with OffByOne. */
     @Test
-    public void TestPalindromeOffByOne1() {
+    public void testPalindromeOffByOne1() {
         CharacterComparator cc = new OffByOne();
         assertTrue(palindrome.isPalindrome("a", cc));
     }
 
     @Test
-    public void TestPalindromeOffByOne2() {
+    public void testPalindromeOffByOne2() {
         CharacterComparator cc = new OffByOne();
         assertFalse(palindrome.isPalindrome("AcA", cc));
     }
 
-    @Test
-    public void TestPalindromeOffByOne3() {
-        CharacterComparator cc = new OffByOne();
-        assertTrue(palindrome.isPalindrome("AcdB", cc));
-    }
-
-    @Test
-    public void TestPalindromeOffByOne4() {
-        CharacterComparator cc = new OffByOne();
-        assertFalse(palindrome.isPalindrome("stttt", cc));
-    }
+   
 
 
     /** unit tests for isPalindrome with OffByN. */
     @Test
-    public void TestPalindromeOffByN1() {
+    public void testPalindromeOffByN1() {
         CharacterComparator cc = new OffByN(5);
         assertTrue(palindrome.isPalindrome("a", cc));
     }
 
     @Test
-    public void TestPalindromeOffByN2() {
+    public void testPalindromeOffByN2() {
         CharacterComparator cc = new OffByN(5);
         assertTrue(palindrome.isPalindrome("acf", cc));
     }
 
-    @Test
-    public void TestPalindromeOffByN3() {
-        CharacterComparator cc = new OffByN(5);
-        assertTrue(palindrome.isPalindrome("AhcF", cc));
-    }
-
-    @Test
-    public void TestPalindromeOffByN4() {
-        CharacterComparator cc = new OffByN(5);
-        assertFalse(palindrome.isPalindrome("stttt", cc));
-    }
 
 
 }

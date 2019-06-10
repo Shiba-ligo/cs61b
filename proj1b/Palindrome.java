@@ -19,16 +19,17 @@ public class Palindrome {
         Deque wordInDeque = wordToDeque(word);
         return isPalindromeHelper(wordInDeque);
     }
-    private boolean isPalindromeHelper2(Deque<Character> word, CharacterComparator CC) {
+    private boolean isPalindromeHelper2(Deque<Character> word, CharacterComparator cc) {
         if (word.size() < 2) {
             return true;
         } else {
-            return CC.equalChars(word.removeFirst(), word.removeLast()) && isPalindromeHelper2(word, CC);
+            return cc.equalChars(word.removeFirst(), word.removeLast())
+                    && isPalindromeHelper2(word, cc);
         }
     }
 
-    public boolean isPalindrome(String word, CharacterComparator CC) {
+    public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque wordInDeque = wordToDeque(word);
-        return isPalindromeHelper2(wordInDeque, CC);
+        return isPalindromeHelper2(wordInDeque, cc);
     }
 }
