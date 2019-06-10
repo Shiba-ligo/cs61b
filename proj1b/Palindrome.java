@@ -27,7 +27,7 @@ public class Palindrome {
         }
     }
 
-    public boolean isPalinerome(String word, CharacterComparator CC) {
+    public boolean isPalindrome(String word, CharacterComparator CC) {
         Deque wordInDeque = wordToDeque(word);
         return isPalindromeHelper2(wordInDeque, CC);
     }
