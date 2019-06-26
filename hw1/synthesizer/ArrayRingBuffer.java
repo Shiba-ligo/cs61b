@@ -7,9 +7,11 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     private class IterationHelper implements Iterator<T> {
         private int position = first;
         private int count = 0;
+        @Override
         public boolean hasNext() {
             return count < fillCount;
         }
+        @Override
         public T next() {
             count += 1;
             T toReturn = rb[position];
@@ -88,19 +90,14 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      */
     @Override
     public T peek() {
+        if (fillCount == 0) {
+            throw new RuntimeException("Ring buffer underflow");
+        } else {
+            return rb[first];
+        }
 
-        return rb[first];
     }
 
-
-    @Override
-    public int capacity() {
-        return capacity;
-    }
-    @Override
-    public int fillCount() {
-        return fillCount;
-    }
     public Iterator<T> iterator() {
         return new IterationHelper();
     }
